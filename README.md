@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# olive-web
 
-## Getting Started
+Marketing landing page for [Olive](https://github.com/cybort360/olive-web), a personal carbon tracking app for iOS and Android. Static site, no backend.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, static export)
+- Tailwind CSS v4 (CSS-based config, no `tailwind.config.ts`)
+- TypeScript
+- Fraunces 600 + DM Sans 400 via `next/font/google`
+- Deployed on Vercel
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Opens at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx          # Font loading, metadata, body background
+  page.tsx            # Single page: hero, stat, how it works, Meet Olive, mission, FAQ, footer
+  globals.css         # Tailwind v4 theme tokens, keyframes, grain overlay
+  components/
+    back-to-top.tsx   # Client component: scroll-aware back-to-top button
+public/
+  olive-branch.svg    # Brand mark
+  app-screenshot.png  # Phone mockup screenshot (replace with real build)
+```
 
-## Learn More
+## Replacing the app screenshot
 
-To learn more about Next.js, take a look at the following resources:
+Drop a real simulator screenshot at `public/app-screenshot.png`. Recommended size: 393×852px (iPhone 15 Pro logical resolution). The phone mockup applies a gradient mask over the top ~26% to hide the status bar, so the screenshot doesn't need to be cropped.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel auto-detects Next.js. Push to `main` and it deploys. No environment variables needed.
