@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <>
-      <main className="min-h-screen bg-forest flex flex-col items-center justify-center px-6 py-20 text-center">
+      <main className="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center">
 
         {/* Olive branch mark */}
         <Image
@@ -41,7 +41,7 @@ export default function Home() {
 
       </main>
 
-      <footer className="bg-forest font-sans text-xs text-white/35 text-center py-6">
+      <footer className="font-sans text-xs text-white/35 text-center py-6">
         © 2026 Olive
       </footer>
     </>
