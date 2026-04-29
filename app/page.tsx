@@ -2,18 +2,32 @@ import Image from 'next/image'
 import { BackToTop } from './components/back-to-top'
 
 const NAV_LINKS = [
-  { label: 'How it works', href: '#how-it-works' },
-  { label: 'Meet Olive',   href: '#meet-olive' },
-  { label: 'FAQ',          href: '#faq' },
+  { label: 'How it works', href: '#how-it-works', mobileHidden: true },
+  { label: 'Meet Olive',   href: '#meet-olive',   mobileHidden: false },
+  { label: 'FAQ',          href: '#faq',           mobileHidden: false },
 ]
 
 function Nav() {
   return (
     <nav
-      className="fixed top-6 right-6 z-50 animate-fade-in-up [animation-delay:0.5s]"
+      className="fixed top-0 sm:top-6 inset-x-0 sm:inset-x-auto sm:right-6 z-50 animate-fade-in-up [animation-delay:0.5s]"
       aria-label="Site navigation"
     >
-      <div className="flex items-center bg-forest/70 backdrop-blur-md border border-white/[0.09] rounded-full p-1 shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+      {/* Mobile: slim full-width bar */}
+      <div className="flex sm:hidden items-center justify-center gap-1 bg-forest/85 backdrop-blur-md border-b border-white/[0.08] px-4 py-2.5">
+        {NAV_LINKS.map(({ label, href }) => (
+          <a
+            key={href}
+            href={href}
+            className="font-sans text-[11px] text-white/50 hover:text-sage transition-colors duration-200 px-3 py-1 rounded-full hover:bg-white/[0.06]"
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+      {/* sm+: floating pill */}
+      <div className="hidden sm:flex items-center bg-forest/70 backdrop-blur-md border border-white/[0.09] rounded-full p-1 shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
         {NAV_LINKS.map(({ label, href }) => (
           <a
             key={href}
@@ -114,7 +128,7 @@ export default function Home() {
       <Nav />
 
       {/* ─── 1. HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24 px-8 lg:px-20 py-24">
+      <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-16 lg:gap-24 px-8 lg:px-20 pt-28 pb-24 sm:py-24">
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
           <Image
             src="/olive-branch.svg"
