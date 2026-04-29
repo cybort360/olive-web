@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
-      <body className="bg-forest antialiased">{children}</body>
+      <body className="bg-forest antialiased" suppressHydrationWarning>{children}</body>
     </html>
   )
 }
